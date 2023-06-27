@@ -18,21 +18,27 @@ const airPlanes = [
 ];
 
 function filterAirPlane() {
-  const manufacturer = prompt('¿Quieres que te muestre datos de ' + nameAirPlanes + '?');
-  const filteredPlanes = airPlanes.filter(plane => plane.factory.toLowerCase() === nameAirPlanes.toLowerCase());
+  const option = prompt('¿Qué avión te gustaría ver? "Airbus", "Boeing" o "Cantidad de pasajeros"');
   
-  if (manufacturer.toLowerCase() === 'si') { 
-    prompt(JSON.stringify(filteredPlanes));  
-    return filteredPlanes;
-  } else if (manufacturer.toLowerCase() === 'no') {
-    alert('¡Hasta luego!');
+  if (option.toLowerCase() === 'airbus') {
+    const filterPlanes = airPlanes.filter(plane => plane.factory.toLowerCase() === 'airbus');
+    console.log(filterPlanes);
+    return filterPlanes;
+  } else if (option.toLowerCase() === 'boeing') {
+    const filterPlanes = airPlanes.filter(plane => plane.factory.toLowerCase() === 'boeing');
+    console.log(filterPlanes);
+    return filterPlanes;
+  } else if (option.toLowerCase() === 'cantidad') {
+    const numCapacity = prompt('Ingresa la cantidad de pasajeros:');
+    const filterPlanes = airPlanes.filter(plane => plane.capacity >= parseInt(numCapacity));
+    console.log(filterPlanes);
+    return filterPlanes;
   } else {
-    alert('Por favor, escribe "si" o "no" para continuar');
+    alert('Opción no válida');
   }
 }
 
 filterAirPlane();
-
 
 
 
